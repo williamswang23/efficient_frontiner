@@ -167,7 +167,7 @@ portdf=stockpridownload(stockname_input)
 portdf.head()
 portdf.describe()
 
-portdf.to_csv('/Users/wangjiatao/Documents/Project_ww/efficient frontiner_github_temp/12stock.csv',index=False)
+portdf.to_csv('files',index=False)
 
 ##
 portdf.sort_index(inplace=True)
