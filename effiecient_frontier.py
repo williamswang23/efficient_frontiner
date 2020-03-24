@@ -149,7 +149,7 @@ def stockpridownload (stockname):
                              date={'gte': '2014-1-1', 'lte': '2019-12-31'}, paginate=True)
     df_port=pd.concat([df_port,pricex],axis=1)
     for idx_sn in range(ic):
-        pricex=quandl.get_table('WIKI/PRICES', ticker = stockname[idx_sn],
+        pricex=quandl.get_table('WIKI/PRICES', ticker = stockname[idx_sn+1],
                         qopts = { 'columns': ['adj_close'] },
                         date={'gte': '2014-1-1', 'lte': '2019-12-31'}, paginate=True);
         pd.DataFrame(pricex);
@@ -164,10 +164,10 @@ def stockpridownload (stockname):
 
 
 portdf=stockpridownload(stockname_input)
-portdf.head()
-portdf.describe()
+print(portdf.head())
+print(portdf.info())
 
-portdf.to_csv('files',index=False)
+#portdf.to_csv('files',index=False)
 
 ##
 portdf.sort_index(inplace=True)
@@ -181,8 +181,8 @@ portdf1.head()
 
 #portdf1.drop(portdf1.index[-1])
 portdf1.dropna(inplace=True)
-portdf1.head()
-
+print(portdf1.head())
+print(portdf1.info())
 ##
 
 
@@ -269,7 +269,7 @@ for idx_mc1 in range(mc1_amount):
 
 print("the target portfolio'return is :")
 print(return_pri)
-print("its variance is:")
+print("its volatility is:")
 print(sigma_cache)
 print("the stock name and weighted is:")
 print(stockname_input)
